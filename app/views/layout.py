@@ -87,6 +87,7 @@ class Layout:
             {'url': '/almacenes/', 'label': 'Almacenes', 'key': 'almacenes'},
             {'url': '/roles/', 'label': 'Roles', 'key': 'roles'},
             {'url': '/ventas/', 'label': 'Ventas', 'key': 'ventas'},
+            {'url': '/detalle-ventas/', 'label': 'Detalle Ventas', 'key': 'detalle-ventas'},
             {'url': '/compras/', 'label': 'Compras', 'key': 'compras'},
             {'url': '/detalle-compras/', 'label': 'Detalle Compras', 'key': 'detalle-compras'},
             {'url': '/reportes/', 'label': 'Reportes', 'key': 'reportes'},
