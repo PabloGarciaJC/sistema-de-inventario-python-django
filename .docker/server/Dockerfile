@@ -53,12 +53,10 @@ RUN pip install --no-cache-dir --upgrade pip setuptools wheel
 ## ---------------------------------------------------------
 
 RUN pip install --no-cache-dir \
-    Flask==3.0.0 \
-    Flask-Cors==4.0.0 \
+    Django==5.0.0 \
     mysqlclient==2.2.1 \
-    SQLAlchemy==2.0.23 \
-    Flask-SQLAlchemy==3.1.1 \
-    python-dotenv==1.0.0
+    python-dotenv==1.0.0 \
+    django-cors-headers==4.3.1
 
 ## ---------------------------------------------------------
 ## Configurar directorio de trabajo
@@ -99,4 +97,4 @@ EXPOSE 8081
 ## ---------------------------------------------------------
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-CMD ["python", "app.py"]
+CMD ["python", "index.py"]
