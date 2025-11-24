@@ -9,6 +9,7 @@ from app.controllers.role_controller import RoleController
 from app.controllers.warehouse_controller import WarehouseController
 from app.controllers.sale_controller import SaleController
 from app.controllers.purchase_controller import PurchaseController
+from app.controllers.purchase_detail_controller import PurchaseDetailController
 from app.controllers.report_controller import ReportController
 from app.controllers.config_controller import ConfigController
 
@@ -51,6 +52,11 @@ urlpatterns = [
     path('compras/<int:purchase_id>/editar/', PurchaseController.edit, name='purchases_edit'),
     path('compras/<int:purchase_id>/eliminar/', PurchaseController.delete, name='purchases_delete'),
     path('compras/<int:purchase_id>/ver/', PurchaseController.view, name='purchases_view'),
+    path('detalle-compras/', PurchaseDetailController.index, name='purchase_details'),
+    path('detalle-compras/crear/', PurchaseDetailController.create, name='purchase_details_create'),
+    path('detalle-compras/<int:detail_id>/editar/', PurchaseDetailController.edit, name='purchase_details_edit'),
+    path('detalle-compras/<int:detail_id>/eliminar/', PurchaseDetailController.delete, name='purchase_details_delete'),
+    path('detalle-compras/<int:detail_id>/ver/', PurchaseDetailController.view, name='purchase_details_view'),
     path('reportes/', ReportController.index, name='reports'),
     path('configuracion/', ConfigController.index, name='config'),
     path('configuracion/perfil/editar/', ConfigController.edit_profile, name='config_edit_profile'),

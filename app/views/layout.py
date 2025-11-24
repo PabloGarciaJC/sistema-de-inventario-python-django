@@ -88,6 +88,7 @@ class Layout:
             {'url': '/roles/', 'label': 'Roles', 'key': 'roles'},
             {'url': '/ventas/', 'label': 'Ventas', 'key': 'ventas'},
             {'url': '/compras/', 'label': 'Compras', 'key': 'compras'},
+            {'url': '/detalle-compras/', 'label': 'Detalle Compras', 'key': 'detalle-compras'},
             {'url': '/reportes/', 'label': 'Reportes', 'key': 'reportes'},
             {'url': '/configuracion/', 'label': 'Configuración', 'key': 'configuracion'},
         ]
