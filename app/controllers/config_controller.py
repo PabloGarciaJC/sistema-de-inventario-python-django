@@ -175,18 +175,24 @@ class ConfigController:
         # Obtener información completa del usuario
         user_info = Config.get_user_info(user_id)
         
+        # Verificar si es superadmin (solo el usuario superadmin puede editar estado)
+        is_superadmin = user.get('username') == 'superadmin'
+        
         # Si es GET, mostrar formulario
         if request.method == 'GET':
-            return HttpResponse(ConfigView.edit_profile(user, user_info, request))
+            return HttpResponse(ConfigView.edit_profile(user, user_info, request, is_admin=is_superadmin))
         
         # Si es POST, procesar el formulario
         if request.method == 'POST':
             try:
                 data = {
                     'nombre_completo': request.POST.get('nombre_completo'),
-                    'email': request.POST.get('email'),
-                    'activo': int(request.POST.get('activo', 1))
+                    'email': request.POST.get('email')
                 }
+                
+                # Solo permitir cambiar el estado si es superadmin
+                if is_superadmin:
+                    data['activo'] = int(request.POST.get('activo', 1))
                 
                 # Actualizar el perfil
                 Config.update_profile(user_id, data)
@@ -195,7 +201,7 @@ class ConfigController:
                 return HttpResponseRedirect('/configuracion/')
                 
             except Exception as e:
-                return HttpResponse(ConfigView.edit_profile(user, user_info, request, error=f'Error al actualizar perfil: {str(e)}'))
+                return HttpResponse(ConfigView.edit_profile(user, user_info, request, is_admin=is_superadmin, error=f'Error al actualizar perfil: {str(e)}'))
     
     @staticmethod
     @ensure_csrf_cookie

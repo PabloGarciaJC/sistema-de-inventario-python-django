@@ -142,19 +142,23 @@ class Config:
     @staticmethod
     def update_profile(user_id, data):
         """Actualiza el perfil del usuario actual"""
-        query = """
+        # Construir query dinámicamente según los campos disponibles
+        fields = ['nombre_completo = %s', 'email = %s']
+        params = [data['nombre_completo'], data.get('email', '')]
+        
+        # Solo actualizar activo si está en data (es administrador)
+        if 'activo' in data:
+            fields.append('activo = %s')
+            params.append(data['activo'])
+        
+        params.append(user_id)
+        
+        query = f"""
             UPDATE pablogarciajcbd.usuarios 
-            SET nombre_completo = %s,
-                email = %s,
-                activo = %s
+            SET {', '.join(fields)}
             WHERE id = %s
         """
-        params = (
-            data['nombre_completo'],
-            data.get('email', ''),
-            data.get('activo', 1),
-            user_id
-        )
+        
         return Database.execute_query(query, params, fetch=False)
     
     @staticmethod

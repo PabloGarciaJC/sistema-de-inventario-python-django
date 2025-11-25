@@ -318,7 +318,7 @@ class ConfigView:
         return HttpResponse(Layout.render('Editar Usuario', user, 'configuracion', content))
     
     @staticmethod
-    def edit_profile(user, user_info, request, error=None):
+    def edit_profile(user, user_info, request, is_admin=False, error=None):
         """Vista del formulario de editar perfil del usuario actual"""
         
         # Obtener token CSRF
@@ -331,6 +331,28 @@ class ConfigView:
             error_html = f"""
             <div class="alert-error">
                 {error}
+            </div>
+            """
+        
+        # Campo de estado solo si es administrador
+        estado_field = ""
+        if is_admin:
+            estado_field = f"""
+            <div>
+                <label class="form-label">Estado *</label>
+                <select name="activo" required 
+                        class="form-select">
+                    <option value="1" {'selected' if user_info.get('activo', 1) == 1 else ''}>Activo</option>
+                    <option value="0" {'selected' if user_info.get('activo', 1) == 0 else ''}>Inactivo</option>
+                </select>
+            </div>
+            """
+        else:
+            estado_field = f"""
+            <div>
+                <label class="form-label">Estado</label>
+                <input type="text" value="{'Activo' if user_info.get('activo', 1) == 1 else 'Inactivo'}" disabled 
+                       class="form-input-disabled">
             </div>
             """
         
@@ -371,14 +393,7 @@ class ConfigView:
                         <small class="form-hint">El rol no se puede cambiar</small>
                     </div>
                     
-                    <div>
-                        <label class="form-label">Estado *</label>
-                        <select name="activo" required 
-                                class="form-select">
-                            <option value="1" {'selected' if user_info.get('activo', 1) == 1 else ''}>Activo</option>
-                            <option value="0" {'selected' if user_info.get('activo', 1) == 0 else ''}>Inactivo</option>
-                        </select>
-                    </div>
+                    {estado_field}
                 </div>
                 
                 <div class="form-actions mt-30">
