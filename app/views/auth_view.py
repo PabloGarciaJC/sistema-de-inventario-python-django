@@ -65,6 +65,9 @@ class AuthView:
         <div class="auth-footer">
             <p>¿No tienes cuenta? <a href="/register/">Regístrate aquí</a></p>
         </div>
+        <div class="auth-copyright">
+            <p>Desarrollado por © Pablo Garcia JC</p>
+        </div>
     </div>
 </div>
 

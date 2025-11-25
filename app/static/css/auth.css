@@ -237,3 +237,17 @@ body {
 .user-card-action:hover { 
     text-decoration: underline; 
 }
+
+/* Auth Copyright */
+.auth-copyright {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #e5e7eb;
+    text-align: center;
+}
+
+.auth-copyright p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 13px;
+}
