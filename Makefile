@@ -60,6 +60,10 @@ stop:
 shell:
 	$(DOCKER_COMPOSE) exec --user pablogarciajc server_docker /bin/bash
 
+.PHONY: init-chatbot
+init-chatbot:
+	$(DOCKER_COMPOSE) exec --user pablogarciajc server_docker python init_chatbot.py
+
 ## ---------------------------------------------------------
 ## Limpieza de Recursos Docker
 ## ---------------------------------------------------------		

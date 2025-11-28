@@ -17,6 +17,7 @@ from app.controllers.inventory_movement_controller import InventoryMovementContr
 from app.controllers.report_controller import ReportController
 from app.controllers.config_controller import ConfigController
 from app.controllers.documentation_controller import DocumentationController
+from app.controllers.chatbot_controller import ChatbotController
 
 urlpatterns = [
     path('', DashboardController.index, name='dashboard'),
@@ -80,6 +81,11 @@ urlpatterns = [
     path('configuracion/usuarios/crear/', ConfigController.create_user, name='config_create_user'),
     path('configuracion/usuarios/<int:user_edit_id>/editar/', ConfigController.edit_user, name='config_edit_user'),
     path('configuracion/usuarios/<int:user_delete_id>/eliminar/', ConfigController.delete_user, name='config_delete_user'),
+    # Chatbot con IA
+    path('chatbot/', ChatbotController.index, name='chatbot'),
+    path('chatbot/send/', ChatbotController.send_message, name='chatbot_send'),
+    path('chatbot/clear-history/', ChatbotController.clear_history, name='chatbot_clear_history'),
+    path('chatbot/history/', ChatbotController.get_history, name='chatbot_history'),
 ]
 
 # Servir archivos estáticos en desarrollo

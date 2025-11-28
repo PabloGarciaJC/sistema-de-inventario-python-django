@@ -1,0 +1,2 @@
+# Dependencias para el Chatbot con IA
+google-generativeai>=0.3.0

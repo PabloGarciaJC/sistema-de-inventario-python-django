@@ -10,6 +10,8 @@ class Layout:
         <link rel="stylesheet" href="/static/css/forms.css">
         <link rel="stylesheet" href="/static/css/dashboard.css">
         <link rel="stylesheet" href="/static/css/swal.css">
+        <link rel="stylesheet" href="/static/css/chatbot.css">
+        <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
         '''
     
     @staticmethod
@@ -47,6 +49,7 @@ class Layout:
             {'url': '/compras/', 'label': 'Compras', 'key': 'compras'},
             {'url': '/detalle-compras/', 'label': 'Detalle Compras', 'key': 'detalle-compras'},
             {'url': '/reportes/', 'label': 'Reportes', 'key': 'reportes'},
+            {'url': '/chatbot/', 'label': '<i class="fas fa-robot"></i> Chatbot IA', 'key': 'chatbot'},
             {'url': '/configuracion/', 'label': 'Configuración', 'key': 'configuracion'},
             {'url': '/documentacion/', 'label': 'Documentación', 'key': 'documentacion'},
         ]
@@ -72,6 +75,9 @@ class Layout:
         navbar = Layout.navbar(user)
         sidebar = Layout.sidebar(active_page)
         
+        chatbot_script = ""
+        if active_page == "chatbot":
+            chatbot_script = '<script src="/static/js/chatbot.js"></script>'
         return f"""
         <!DOCTYPE html>
         <html lang="es">
@@ -96,6 +102,7 @@ class Layout:
                 window.userActive = {('true' if user.get('activo', 1) == 1 else 'false')};
             </script>
             <script src="/static/js/protection.js"></script>
+            {chatbot_script}
         </body>
         </html>
         """
