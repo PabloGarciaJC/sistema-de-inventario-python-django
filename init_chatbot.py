@@ -32,7 +32,7 @@ def init_chatbot():
         print("\n" + "=" * 60)
         print("✓ CHATBOT INICIALIZADO CORRECTAMENTE")
         print("=" * 60)
-        print("\n📝 CONFIGURACIÓN NECESARIA:")
+        print("\n CONFIGURACIÓN NECESARIA:")
         print("\n1. Configura tu API Key de Google Gemini:")
         print("   - Obtén tu key en: https://makersuite.google.com/app/apikey")
         print("   - Establece la variable de entorno:")
