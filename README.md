@@ -7,7 +7,7 @@
 
 ## Funcionalidades Principales
 
-- **Dashboard**: Panel principal con estadísticas en tiempo real, gráficos de ventas, productos más vendidos y resumen del inventario.
+- **Dashboard**: Panel principal con estadísticas generales y visualización resumida de todos los módulos del sistema.
 - **Productos**: Gestión completa de productos con código, nombre, descripción, categoría, precios de compra/venta y control de stock.
 - **Categorías**: Organización de productos por categorías personalizables para mejor clasificación.
 - **Clientes**: Administración de clientes con datos de contacto, historial de compras y seguimiento de transacciones.
@@ -82,7 +82,6 @@ El sistema está diseñado con **roles personalizables**:
    - **`make up`**: Levanta la aplicación y sus contenedores asociados.
    - **`make down`**: Detiene los contenedores y apaga la aplicación.
    - **`make shell`**: Ingresa al contenedor para interactuar directamente con el sistema en su entorno de ejecución.
-   - **`make install-dependencies`**: Instala todas las dependencias necesarias para disponer del sistema de logs y ejecutar pruebas.
    - **`make init-chatbot`**: Instala y configura el chatbot en el sistema.
 
 4. Además de estos comandos, dentro del archivo **Makefile** puedes encontrar otros comandos que te permitirán interactuar de manera más específica con los contenedores y los diferentes servicios que conforman la aplicación.
